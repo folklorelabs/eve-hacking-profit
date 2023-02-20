@@ -1,5 +1,4 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import {
   Table,
   TableBody,
@@ -14,7 +13,8 @@ import {
 } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { itemProps } from '../propTypes/item';
+import { canProps } from '../propTypes/can';
+import { canMetaProps } from '../propTypes/canMeta';
 import Can from './Can';
 import {
   useRelicSitesContext,
@@ -23,7 +23,7 @@ import {
   getFactionRelicItems,
 } from '../contexts/RelicSites';
 
-function Row({ can }) {
+function Row({ can, canMeta }) {
   const [open, setOpen] = React.useState(false);
   return (
     <>
@@ -59,7 +59,7 @@ function Row({ can }) {
               pb: 5,
             }}
             >
-              <Can can={can} />
+              <Can can={can} canMeta={canMeta} />
             </Box>
           </Collapse>
         </TableCell>
@@ -69,19 +69,8 @@ function Row({ can }) {
 }
 
 Row.propTypes = {
-  can: PropTypes.shape({
-    id: PropTypes.string,
-    type: PropTypes.string,
-    faction: PropTypes.string,
-    value: PropTypes.number,
-    max: PropTypes.number,
-    lootTable: PropTypes.arrayOf(itemProps),
-    canMeta: PropTypes.shape({
-      probability: PropTypes.number,
-      qtyCeiling: PropTypes.number,
-      qtyFloor: PropTypes.number,
-    }),
-  }).isRequired,
+  can: canProps.isRequired,
+  canMeta: canMetaProps.isRequired,
 };
 
 export default function RelicCanTable() {
@@ -97,7 +86,6 @@ export default function RelicCanTable() {
           lootTable: getFactionRelicItems(relicSitesState, factionName),
           value: getFactionCanAvg(relicSitesState, factionName, canType),
           max: getFactionCanMax(relicSitesState, factionName, canType),
-          canMeta: relicSitesState.cans[canType],
         };
         cans.push(can);
       });
@@ -119,7 +107,11 @@ export default function RelicCanTable() {
         </TableHead>
         <TableBody>
           {allCans.sort((a, b) => b.value - a.value).map((can) => (
-            <Row key={can.id} can={can} />
+            <Row
+              key={can.id}
+              can={can}
+              canMeta={relicSitesState.cans[can.type]}
+            />
           ))}
         </TableBody>
       </Table>

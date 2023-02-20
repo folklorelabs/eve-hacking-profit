@@ -20,52 +20,32 @@ function Site({
 }) {
   return (
     <Container className="Site" size={size}>
-      {can.canMeta[1].probability ? (
+      {Object.keys(can.canMeta).filter((tier) => !!can.canMeta[tier].probability).map((tier) => (
         <Box sx={{ pr: 8 }}>
           <Typography variant="h6" gutterBottom component="div">
-            T1 Salvage
+            T
+            {tier}
+            {' '}
+            Salvage
           </Typography>
           <Typography sx={{ maxWidth: 260 }}>
             <TypeEmphasis>
-              {percentLabel(can.canMeta[1].probability)}
+              {percentLabel(can.canMeta[tier].probability)}
             </TypeEmphasis>
             {' '}
             chance to contain
             {' '}
             <TypeEmphasis>
-              {can.canMeta[1].qtyFloor}
+              {can.canMeta[tier].qtyFloor}
               -
-              {can.canMeta[1].qtyCeiling}
+              {can.canMeta[tier].qtyCeiling}
             </TypeEmphasis>
             {' '}
             items:
           </Typography>
-          <LootTable lootTable={can.lootTable.filter((item) => item.tier === 1)} />
+          <LootTable lootTable={can.lootTable.filter((item) => `${item.tier}` === tier)} />
         </Box>
-      ) : ''}
-      {can.canMeta[2].probability ? (
-        <Box>
-          <Typography variant="h6" gutterBottom component="div">
-            T2 Salvage
-          </Typography>
-          <Typography>
-            <TypeEmphasis>
-              {percentLabel(can.canMeta[2].probability)}
-            </TypeEmphasis>
-            {' '}
-            chance to contain
-            {' '}
-            <TypeEmphasis>
-              {can.canMeta[2].qtyFloor}
-              -
-              {can.canMeta[2].qtyCeiling}
-            </TypeEmphasis>
-            {' '}
-            items:
-          </Typography>
-          <LootTable lootTable={can.lootTable.filter((item) => item.tier === 2)} />
-        </Box>
-      ) : ''}
+      ))}
     </Container>
   );
 }
