@@ -84,9 +84,9 @@ export default function RelicCanTable() {
   const { state } = useLocation();
   const [dirty, setDirty] = React.useState(false);
   const [canFactionFilters, setCanFactionFilters] = React
-    .useState(() => (state.canFaction ? [state.canFaction] : []));
+    .useState(() => (state && state.canFaction ? [state.canFaction] : []));
   const [canTypeFilters, setCanTypeFilters] = React
-    .useState(() => (state.canType ? [state.canType] : []));
+    .useState(() => (state && state.canType ? [state.canType] : []));
   const { relicSitesState } = useRelicSitesContext();
   const allCans = React.useMemo(() => {
     const cans = [];
@@ -188,7 +188,7 @@ export default function RelicCanTable() {
               <Row
                 key={can.id}
                 can={can}
-                initialOpen={!dirty
+                initialOpen={state && !dirty
                   && can.faction === state.canFaction && can.type === state.canType}
               />
             ))}
