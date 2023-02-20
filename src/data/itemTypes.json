@@ -1,0 +1,14 @@
+[
+  {
+    "id": "relic-1",
+    "name": "T1 Salvage"
+  },
+  {
+    "id": "relic-2",
+    "name": "T2 Salvage"
+  },
+  {
+    "id": "data",
+    "name": "Data Cores"
+  }
+]

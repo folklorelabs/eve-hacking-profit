@@ -4,7 +4,7 @@ import './index.css';
 import './index.styles';
 import { SnackbarProvider } from 'notistack';
 import App from './components/App';
-import { RelicSitesProvider } from './contexts/RelicSites';
+import { ProfitProvider } from './contexts/Profit';
 import { ColorModeProvider } from './contexts/ColorMode';
 import reportWebVitals from './reportWebVitals';
 
@@ -13,9 +13,9 @@ root.render(
   <React.StrictMode>
     <ColorModeProvider>
       <SnackbarProvider maxSnack={3}>
-        <RelicSitesProvider>
+        <ProfitProvider>
           <App />
-        </RelicSitesProvider>
+        </ProfitProvider>
       </SnackbarProvider>
     </ColorModeProvider>
   </React.StrictMode>,

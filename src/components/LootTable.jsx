@@ -11,13 +11,13 @@ import {
 } from './LootTable.styles';
 
 function LootTable({
-  lootTable,
+  items,
   size,
 }) {
   return (
     <Container className="LootTable" size={size}>
       <ul className="ItemList">
-        {lootTable.sort((a, b) => b.esiValue - a.esiValue).map((item) => (
+        {items.map((item) => (
           <ItemListItem
             className="ItemList-item"
             key={`${item.typeID}`}
@@ -39,7 +39,7 @@ LootTable.defaultProps = {
 };
 
 LootTable.propTypes = {
-  lootTable: PropTypes.arrayOf(itemProps).isRequired,
+  items: PropTypes.arrayOf(itemProps).isRequired,
   size: PropTypes.number,
 };
 

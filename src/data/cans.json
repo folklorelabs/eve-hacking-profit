@@ -1,0 +1,92 @@
+[
+  {
+    "id": "rubble",
+    "name": "Rubble",
+    "category": "relic",
+    "contents": [
+      {
+        "type": "relic-1",
+        "probability": 0.25,
+        "qtyFloor": 3,
+        "qtyCeiling": 20
+      },
+      {
+        "type": "relic-2",
+        "probability": 0.055,
+        "qtyFloor": 1,
+        "qtyCeiling": 3
+      }
+    ]
+  },
+  {
+    "id": "remains",
+    "name": "Remains",
+    "category": "relic",
+    "contents": [
+      {
+        "type": "relic-1",
+        "probability": 0.5,
+        "qtyFloor": 5,
+        "qtyCeiling": 40
+      },
+      {
+        "type": "relic-2",
+        "probability": 0.125,
+        "qtyFloor": 1,
+        "qtyCeiling": 5
+      }
+    ]
+  },
+  {
+    "id": "ruins",
+    "name": "Ruins",
+    "category": "relic",
+    "contents": [
+      {
+        "type": "relic-2",
+        "probability": 0.25,
+        "qtyFloor": 1,
+        "qtyCeiling": 15
+      }
+    ]
+  },
+  {
+    "id": "comm-tower",
+    "name": "Comm Tower",
+    "category": "data",
+    "contents": [
+      {
+        "type": "data",
+        "probability": 0,
+        "qtyFloor": 0,
+        "qtyCeiling": 0
+      }
+    ]
+  },
+  {
+    "id": "mainframe",
+    "name": "Mainframe",
+    "category": "data",
+    "contents": [
+      {
+        "type": "data",
+        "probability": 0,
+        "qtyFloor": 0,
+        "qtyCeiling": 0
+      }
+    ]
+  },
+  {
+    "id": "databank",
+    "name": "Databank",
+    "category": "data",
+    "contents": [
+      {
+        "type": "data",
+        "probability": 0,
+        "qtyFloor": 0,
+        "qtyCeiling": 0
+      }
+    ]
+  }
+]

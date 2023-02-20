@@ -1,0 +1,502 @@
+[
+  {
+    "typeID": 25616,
+    "name": "Artificial Neural Network",
+    "type": "relic-2",
+    "factions": [
+      "angel-cartel",
+      "blood-raiders",
+      "guristas",
+      "sanshas-nation",
+      "serpentis"
+    ]
+  },
+  {
+    "typeID": 25597,
+    "name": "Damaged Artificial Neural Network",
+    "type": "relic-1",
+    "factions": [
+      "angel-cartel",
+      "blood-raiders",
+      "guristas",
+      "sanshas-nation",
+      "serpentis"
+    ]
+  },
+  {
+    "typeID": 25620,
+    "name": "Interface Circuit",
+    "type": "relic-2",
+    "factions": [
+      "angel-cartel",
+      "blood-raiders",
+      "guristas",
+      "sanshas-nation",
+      "serpentis"
+    ]
+  },
+  {
+    "typeID": 25601,
+    "name": "Fried Interface Circuit",
+    "type": "relic-1",
+    "factions": [
+      "angel-cartel",
+      "blood-raiders",
+      "guristas",
+      "sanshas-nation",
+      "serpentis"
+    ]
+  },
+  {
+    "typeID": 25619,
+    "name": "Logic Circuit",
+    "type": "relic-2",
+    "factions": [
+      "angel-cartel",
+      "blood-raiders",
+      "guristas",
+      "sanshas-nation",
+      "serpentis"
+    ]
+  },
+  {
+    "typeID": 25600,
+    "name": "Burned Logic Circuit",
+    "type": "relic-1",
+    "factions": [
+      "angel-cartel",
+      "blood-raiders",
+      "guristas",
+      "sanshas-nation",
+      "serpentis"
+    ]
+  },
+  {
+    "typeID": 25618,
+    "name": "Micro Circuit",
+    "type": "relic-2",
+    "factions": [
+      "angel-cartel",
+      "blood-raiders",
+      "guristas",
+      "sanshas-nation",
+      "serpentis"
+    ]
+  },
+  {
+    "typeID": 25599,
+    "name": "Charred Micro Circuit",
+    "type": "relic-1",
+    "factions": [
+      "angel-cartel",
+      "blood-raiders",
+      "guristas",
+      "sanshas-nation",
+      "serpentis"
+    ]
+  },
+  {
+    "typeID": 25617,
+    "name": "Power Circuit",
+    "type": "relic-2",
+    "factions": [
+      "angel-cartel",
+      "blood-raiders",
+      "guristas",
+      "sanshas-nation",
+      "serpentis"
+    ]
+  },
+  {
+    "typeID": 25598,
+    "name": "Tripped Power Circuit",
+    "type": "relic-1",
+    "factions": [
+      "angel-cartel",
+      "blood-raiders",
+      "guristas",
+      "sanshas-nation",
+      "serpentis"
+    ]
+  },
+  {
+    "typeID": 25621,
+    "name": "Impetus Console",
+    "type": "relic-2",
+    "factions": [
+      "angel-cartel"
+    ]
+  },
+  {
+    "typeID": 25602,
+    "name": "Thruster Console",
+    "type": "relic-1",
+    "factions": [
+      "angel-cartel"
+    ]
+  },
+  {
+    "typeID": 25614,
+    "name": "Single-crystal Superalloy I-beam",
+    "type": "relic-2",
+    "factions": [
+      "angel-cartel"
+    ]
+  },
+  {
+    "typeID": 25595,
+    "name": "Alloyed Tritanium Bar",
+    "type": "relic-1",
+    "factions": [
+      "angel-cartel"
+    ]
+  },
+  {
+    "typeID": 25612,
+    "name": "Trigger Unit",
+    "type": "relic-2",
+    "factions": [
+      "angel-cartel"
+    ]
+  },
+  {
+    "typeID": 25593,
+    "name": "Smashed Trigger Unit",
+    "type": "relic-1",
+    "factions": [
+      "angel-cartel"
+    ]
+  },
+  {
+    "typeID": 25622,
+    "name": "Capacitor Console",
+    "type": "relic-2",
+    "factions": [
+      "blood-raiders"
+    ]
+  },
+  {
+    "typeID": 25603,
+    "name": "Melted Capacitor Console",
+    "type": "relic-1",
+    "factions": [
+      "blood-raiders"
+    ]
+  },
+  {
+    "typeID": 25613,
+    "name": "Power Conduit",
+    "type": "relic-2",
+    "factions": [
+      "blood-raiders"
+    ]
+  },
+  {
+    "typeID": 25594,
+    "name": "Tangled Power Conduit",
+    "type": "relic-1",
+    "factions": [
+      "blood-raiders"
+    ]
+  },
+  {
+    "typeID": 25625,
+    "name": "Enhanced Ward Console",
+    "type": "relic-2",
+    "factions": [
+      "guristas"
+    ]
+  },
+  {
+    "typeID": 25606,
+    "name": "Ward Console",
+    "type": "relic-1",
+    "factions": [
+      "guristas"
+    ]
+  },
+  {
+    "typeID": 25608,
+    "name": "Intact Shield Emitter",
+    "type": "relic-2",
+    "factions": [
+      "guristas"
+    ]
+  },
+  {
+    "typeID": 25589,
+    "name": "Malfunctioning Shield Emitter",
+    "type": "relic-1",
+    "factions": [
+      "guristas",
+      "serpentis"
+    ]
+  },
+  {
+    "typeID": 25607,
+    "name": "Telemetry Processor",
+    "type": "relic-2",
+    "factions": [
+      "guristas"
+    ]
+  },
+  {
+    "typeID": 25588,
+    "name": "Scorched Telemetry Processor",
+    "type": "relic-1",
+    "factions": [
+      "guristas"
+    ]
+  },
+  {
+    "typeID": 25611,
+    "name": "Current Pump",
+    "type": "relic-2",
+    "factions": [
+      "sanshas-nation"
+    ]
+  },
+  {
+    "typeID": 25592,
+    "name": "Defective Current Pump",
+    "type": "relic-1",
+    "factions": [
+      "sanshas-nation"
+    ]
+  },
+  {
+    "typeID": 25624,
+    "name": "Intact Armor Plates",
+    "type": "relic-2",
+    "factions": [
+      "sanshas-nation"
+    ]
+  },
+  {
+    "typeID": 25605,
+    "name": "Armor Plates",
+    "type": "relic-1",
+    "factions": [
+      "sanshas-nation"
+    ]
+  },
+  {
+    "typeID": 25609,
+    "name": "Nanite Compound",
+    "type": "relic-2",
+    "factions": [
+      "sanshas-nation"
+    ]
+  },
+  {
+    "typeID": 25590,
+    "name": "Contaminated Nanite Compound",
+    "type": "relic-1",
+    "factions": [
+      "sanshas-nation"
+    ]
+  },
+  {
+    "typeID": 25623,
+    "name": "Conductive Thermoplastic",
+    "type": "relic-2",
+    "factions": [
+      "serpentis"
+    ]
+  },
+  {
+    "typeID": 25604,
+    "name": "Conductive Polymer",
+    "type": "relic-1",
+    "factions": [
+      "serpentis"
+    ]
+  },
+  {
+    "typeID": 25615,
+    "name": "Drone Transceiver",
+    "type": "relic-2",
+    "factions": [
+      "serpentis"
+    ]
+  },
+  {
+    "typeID": 25596,
+    "name": "Broken Drone Transceiver",
+    "type": "relic-1",
+    "factions": [
+      "serpentis"
+    ]
+  },
+  {
+    "typeID": 25610,
+    "name": "Lorentz Fluid",
+    "type": "relic-2",
+    "factions": [
+      "serpentis"
+    ]
+  },
+  {
+    "typeID": 25591,
+    "name": "Contaminated Lorentz Fluid",
+    "type": "relic-1",
+    "factions": [
+      "serpentis"
+    ]
+  },
+  {
+    "typeID": 20424,
+    "name": "Datacore - Mechanical Engineering",
+    "type": "data",
+    "factions": [
+      "angel-cartel",
+      "blood-raiders",
+      "guristas",
+      "sanshas-nation",
+      "serpentis"
+    ]
+  },
+  {
+    "typeID": 20171,
+    "name": "Datacore - Hydromagnetic Physics",
+    "type": "data",
+    "factions": [
+      "blood-raiders",
+      "guristas",
+      "sanshas-nation"
+    ]
+  },
+  {
+    "typeID": 20415,
+    "name": "Datacore - Molecular Engineering",
+    "type": "data",
+    "factions": [
+      "angel-cartel",
+      "blood-raiders",
+      "sanshas-nation"
+    ]
+  },
+  {
+    "typeID": 20416,
+    "name": "Datacore - Nanite Engineering",
+    "type": "data",
+    "factions": [
+      "angel-cartel",
+      "blood-raiders",
+      "sanshas-nation"
+    ]
+  },
+  {
+    "typeID": 20414,
+    "name": "Datacore - Quantum Physics",
+    "type": "data",
+    "factions": [
+      "blood-raiders",
+      "guristas",
+      "sanshas-nation"
+    ]
+  },
+  {
+    "typeID": 20421,
+    "name": "Datacore - Amarrian Starship Engineering",
+    "type": "data",
+    "factions": [
+      "blood-raiders",
+      "sanshas-nation"
+    ]
+  },
+  {
+    "typeID": 20417,
+    "name": "Datacore - Electromagnetic Physics",
+    "type": "data",
+    "factions": [
+      "guristas",
+      "serpentis"
+    ]
+  },
+  {
+    "typeID": 20418,
+    "name": "Datacore - Electronic Engineering",
+    "type": "data",
+    "factions": [
+      "guristas",
+      "serpentis"
+    ]
+  },
+  {
+    "typeID": 20419,
+    "name": "Datacore - Graviton Physics",
+    "type": "data",
+    "factions": [
+      "guristas",
+      "serpentis"
+    ]
+  },
+  {
+    "typeID": 20411,
+    "name": "Datacore - High Energy Physics",
+    "type": "data",
+    "factions": [
+      "blood-raiders",
+      "sanshas-nation"
+    ]
+  },
+  {
+    "typeID": 20413,
+    "name": "Datacore - Laser Physics",
+    "type": "data",
+    "factions": [
+      "blood-raiders",
+      "sanshas-nation"
+    ]
+  },
+  {
+    "typeID": 20420,
+    "name": "Datacore - Rocket Science",
+    "type": "data",
+    "factions": [
+      "angel-cartel",
+      "guristas"
+    ]
+  },
+  {
+    "typeID": 25887,
+    "name": "Datacore - Caldari Starship Engineering",
+    "type": "data",
+    "factions": [
+      "guristas"
+    ]
+  },
+  {
+    "typeID": 20410,
+    "name": "Datacore - Gallentean Starship Engineering",
+    "type": "data",
+    "factions": [
+      "serpentis"
+    ]
+  },
+  {
+    "typeID": 20172,
+    "name": "Datacore - Minmatar Starship Engineering",
+    "type": "data",
+    "factions": [
+      "angel-cartel"
+    ]
+  },
+  {
+    "typeID": 20423,
+    "name": "Datacore - Nuclear Physics",
+    "type": "data",
+    "factions": [
+      "angel-cartel"
+    ]
+  },
+  {
+    "typeID": 20412,
+    "name": "Datacore - Plasma Physics",
+    "type": "data",
+    "factions": [
+      "serpentis"
+    ]
+  }
+]

@@ -1,27 +1,18 @@
 import PropTypes from 'prop-types';
 
-import { itemProps } from './item';
-import { lootTierProps } from './lootTier';
-
 export const canDefaults = {
 
 };
 
 export const canProps = PropTypes.shape({
   id: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  faction: PropTypes.oneOf([
-    'Angel Cartel',
-    'Blood Raiders',
-    'Guristas',
-    'Sansha\'s Nation',
-    'Serpentis',
-  ]).isRequired,
-  value: PropTypes.number.isRequired,
-  max: PropTypes.number.isRequired,
-  lootTable: PropTypes.arrayOf(itemProps),
-  lootTiers: PropTypes.arrayOf(lootTierProps),
-  qty: PropTypes.number,
+  name: PropTypes.string.isRequired,
+  contents: PropTypes.arrayOf(PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    probability: PropTypes.number.isRequired,
+    qtyFloor: PropTypes.number.isRequired,
+    qtyCeiling: PropTypes.number.isRequired,
+  })).isRequired,
 });
 
 export default canProps;

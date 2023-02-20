@@ -1,0 +1,162 @@
+[
+  {
+    "id": "monument-site",
+    "name": "Monument Site",
+    "category": "relic",
+    "difficulty": 1,
+    "cans": [
+      {
+        "id": "rubble",
+        "qty": 2
+      },
+      {
+        "id": "remains",
+        "qty": 3
+      },
+      {
+        "id": "ruins",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "id": "temple-site",
+    "name": "Temple Site",
+    "category": "relic",
+    "difficulty": 1,
+    "cans": [
+      {
+        "id": "rubble",
+        "qty": 1
+      },
+      {
+        "id": "remains",
+        "qty": 3
+      },
+      {
+        "id": "ruins",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "id": "science-output",
+    "name": "Science Output",
+    "category": "relic",
+    "difficulty": 2,
+    "cans": [
+      {
+        "id": "rubble",
+        "qty": 0
+      },
+      {
+        "id": "remains",
+        "qty": 4
+      },
+      {
+        "id": "ruins",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "id": "crystal-quarry",
+    "name": "Crystal Quarry",
+    "category": "relic",
+    "difficulty": 2,
+    "cans": [
+      {
+        "id": "rubble",
+        "qty": 1
+      },
+      {
+        "id": "remains",
+        "qty": 3
+      },
+      {
+        "id": "ruins",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "id": "sparking-transmitter",
+    "name": "Sparking Transmitter",
+    "category": "data",
+    "difficulty": 1,
+    "cans": [
+      {
+        "id": "comm-tower",
+        "qty": 1
+      },
+      {
+        "id": "mainframe",
+        "qty": 3
+      },
+      {
+        "id": "databank",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "id": "survey-site",
+    "name": "Survey Site",
+    "category": "data",
+    "difficulty": 1,
+    "cans": [
+      {
+        "id": "comm-tower",
+        "qty": 2
+      },
+      {
+        "id": "moinframe",
+        "qty": 2
+      },
+      {
+        "id": "databank",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "id": "command-center",
+    "name": "Command Center",
+    "category": "data",
+    "difficulty": 2,
+    "cans": [
+      {
+        "id": "comm-tower",
+        "qty": 1
+      },
+      {
+        "id": "mainframe",
+        "qty": 2
+      },
+      {
+        "id": "databank",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "id": "data-mining-site",
+    "name": "Data Mining Site",
+    "category": "data",
+    "difficulty": 2,
+    "cans": [
+      {
+        "id": "comm-tower",
+        "qty": 1
+      },
+      {
+        "id": "mainframe",
+        "qty": 2
+      },
+      {
+        "id": "databank",
+        "qty": 4
+      }
+    ]
+  }
+]

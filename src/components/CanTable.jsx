@@ -17,16 +17,22 @@ import {
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { useLocation } from 'react-router-dom';
-import { canProps } from '../propTypes/can';
-import Can from './Can';
+import FactionCan from './FactionCan';
 import {
-  useRelicSitesContext,
+  useProfitContext,
   getFactionCanAvg,
   getFactionCanMax,
-  getFactionRelicItems,
-} from '../contexts/RelicSites';
+} from '../contexts/Profit';
 
-function Row({ can, initialOpen }) {
+function Row({
+  type,
+  name,
+  avgValue,
+  maxValue,
+  factionId,
+  canId,
+  initialOpen,
+}) {
   const [open, setOpen] = React.useState(initialOpen);
   return (
     <>
@@ -41,16 +47,13 @@ function Row({ can, initialOpen }) {
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">
-          Relic
+          {type}
         </TableCell>
         <TableCell component="th" scope="row">
-          {can.faction}
+          {name}
         </TableCell>
-        <TableCell component="th" scope="row">
-          {can.type}
-        </TableCell>
-        <TableCell align="right">{Math.round(can.value).toLocaleString()}</TableCell>
-        <TableCell align="right">{Math.round(can.max).toLocaleString()}</TableCell>
+        <TableCell align="right">{Math.round(avgValue).toLocaleString()}</TableCell>
+        <TableCell align="right">{Math.round(maxValue).toLocaleString()}</TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -62,7 +65,7 @@ function Row({ can, initialOpen }) {
               pb: 5,
             }}
             >
-              <Can can={can} />
+              <FactionCan factionId={factionId} canId={canId} />
             </Box>
           </Collapse>
         </TableCell>
@@ -76,62 +79,93 @@ Row.defaultProps = {
 };
 
 Row.propTypes = {
-  can: canProps.isRequired,
+  type: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  avgValue: PropTypes.number.isRequired,
+  maxValue: PropTypes.number.isRequired,
+  factionId: PropTypes.string.isRequired,
+  canId: PropTypes.string.isRequired,
   initialOpen: PropTypes.bool,
 };
 
-export default function RelicCanTable() {
+export default function CanTable() {
   const { state } = useLocation();
   const [dirty, setDirty] = React.useState(false);
+  const [canCategoryFilters, setCanCategoryFilters] = React
+    .useState(() => (state && state.canCategory ? [state.canCategory] : []));
   const [canFactionFilters, setCanFactionFilters] = React
     .useState(() => (state && state.canFaction ? [state.canFaction] : []));
   const [canTypeFilters, setCanTypeFilters] = React
     .useState(() => (state && state.canType ? [state.canType] : []));
-  const { relicSitesState } = useRelicSitesContext();
-  const allCans = React.useMemo(() => {
+  const { profitState } = useProfitContext();
+  const factionCans = React.useMemo(() => {
     const cans = [];
-    Object.keys(relicSitesState.itemsByFaction).forEach((factionName) => {
-      Object.keys(relicSitesState.cans).forEach((canType) => {
-        const can = {
-          id: `${factionName}_${canType}`,
-          type: canType,
-          faction: factionName,
-          lootTable: getFactionRelicItems(relicSitesState, factionName),
-          value: getFactionCanAvg(relicSitesState, factionName, canType),
-          max: getFactionCanMax(relicSitesState, factionName, canType),
-          lootTiers: Object.keys(relicSitesState.cans[canType]).map((lootTierId) => ({
-            ...relicSitesState.cans[canType][lootTierId],
-            id: lootTierId,
-          })),
-        };
-        cans.push(can);
+    profitState.factions.forEach((faction) => {
+      profitState.cans.forEach((can) => {
+        const categoryId = can.contents[0].type.split('-')[0];
+        console.log(profitState);
+        cans.push({
+          id: `${faction.id}_${can.id}`,
+          name: `${faction.name} ${can.name}`,
+          faction,
+          can,
+          value: getFactionCanAvg(profitState, faction.id, can.id),
+          max: getFactionCanMax(profitState, faction.id, can.id),
+          category: {
+            id: categoryId,
+            name: `${categoryId.charAt(0).toUpperCase()}${categoryId.slice(1)}`,
+          },
+        });
       });
     });
     return cans;
-  }, [relicSitesState]);
-  const factions = React.useMemo(
-    () => [...new Set(allCans.map((can) => can.faction))],
-    [allCans],
+  }, [profitState]);
+  const canCategories = React.useMemo(
+    () => [...new Set(factionCans.map((fc) => fc.category.id))],
+    [factionCans],
   );
   const canTypes = React.useMemo(
-    () => [...new Set(allCans.map((can) => can.type))],
-    [allCans],
+    () => [...new Set(factionCans.map((fc) => fc.can))],
+    [factionCans],
   );
-  const filteredCans = React.useMemo(() => allCans
-    .filter((can) => !canFactionFilters.length || canFactionFilters.includes(can.faction))
-    .filter((can) => !canTypeFilters.length || canTypeFilters.includes(can.type))
-    .sort((a, b) => b.value - a.value), [allCans, canFactionFilters, canTypeFilters]);
+  const filteredFactionCans = React.useMemo(
+    () => factionCans
+      .filter((fc) => !canCategoryFilters.length || canCategoryFilters.includes(fc.category.id))
+      .filter((fc) => !canFactionFilters.length || canFactionFilters.includes(fc.faction.id))
+      .filter((fc) => !canTypeFilters.length || canTypeFilters.includes(fc.can.id))
+      .sort((a, b) => b.value - a.value),
+    [factionCans, canFactionFilters, canTypeFilters, canCategoryFilters],
+  );
   const filteredAvg = React.useMemo(() => {
-    const total = filteredCans.map((can) => can.value).reduce((sum, val) => sum + val, 0);
-    return total / filteredCans.length;
-  }, [filteredCans]);
+    const total = filteredFactionCans.map((fc) => fc.value).reduce((sum, val) => sum + val, 0);
+    return total / filteredFactionCans.length;
+  }, [filteredFactionCans]);
   const filteredMax = React.useMemo(
-    () => Math.max(...filteredCans.map((can) => can.max)),
-    [filteredCans],
+    () => Math.max(...filteredFactionCans.map((fc) => fc.max)),
+    [filteredFactionCans],
   );
   return (
     <Box>
       <Box sx={{ display: 'flex', m: 3 }}>
+        <Box sx={{ mr: 2 }}>
+          Type:
+          {' '}
+          <ToggleButtonGroup
+            size="small"
+            value={canCategoryFilters}
+            onChange={(e, newFilters) => {
+              setCanCategoryFilters(newFilters);
+              setDirty(true);
+            }}
+            aria-label="category filtering"
+          >
+            {canCategories.map((categoryId) => (
+              <ToggleButton key={categoryId} value={categoryId} aria-label={categoryId}>
+                {categoryId}
+              </ToggleButton>
+            ))}
+          </ToggleButtonGroup>
+        </Box>
         <Box sx={{ mr: 2 }}>
           Faction:
           {' '}
@@ -142,17 +176,17 @@ export default function RelicCanTable() {
               setCanFactionFilters(newFilters);
               setDirty(true);
             }}
-            aria-label="table filtering"
+            aria-label="faction filtering"
           >
-            {factions.map((faction) => (
-              <ToggleButton key={faction} value={faction} aria-label={faction}>
-                {faction}
+            {profitState.factions.map((faction) => (
+              <ToggleButton key={faction.id} value={faction.id} aria-label={faction.name}>
+                {faction.name}
               </ToggleButton>
             ))}
           </ToggleButtonGroup>
         </Box>
         <Box>
-          Site Type:
+          Site:
           {' '}
           <ToggleButtonGroup
             size="small"
@@ -161,11 +195,11 @@ export default function RelicCanTable() {
               setCanTypeFilters(newFilters);
               setDirty(true);
             }}
-            aria-label="table filtering"
+            aria-label="site filtering"
           >
-            {canTypes.map((siteType) => (
-              <ToggleButton key={siteType} value={siteType} aria-label={siteType}>
-                {siteType}
+            {canTypes.map((can) => (
+              <ToggleButton key={can.id} value={can.id} aria-label={can.name}>
+                {can.name}
               </ToggleButton>
             ))}
           </ToggleButtonGroup>
@@ -177,23 +211,26 @@ export default function RelicCanTable() {
             <TableRow>
               <TableCell />
               <TableCell>Type</TableCell>
-              <TableCell>Faction</TableCell>
               <TableCell>Name</TableCell>
               <TableCell align="right">Average&nbsp;Value&nbsp;(ISK)</TableCell>
               <TableCell align="right">Max&nbsp;Value&nbsp;(ISK)</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {filteredCans.sort((a, b) => b.value - a.value).map((can) => (
+            {filteredFactionCans.map((fc) => (
               <Row
-                key={can.id}
-                can={can}
+                key={fc.id}
+                type={fc.category.name}
+                name={fc.name}
+                avgValue={fc.value}
+                maxValue={fc.max}
+                factionId={fc.faction.id}
+                canId={fc.can.id}
                 initialOpen={state && !dirty
-                  && can.faction === state.canFaction && can.type === state.canType}
+                  && fc.faction.id === state.canFaction && fc.can.id === state.canType}
               />
             ))}
             <TableRow>
-              <TableCell />
               <TableCell />
               <TableCell />
               <TableCell />
