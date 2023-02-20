@@ -8,16 +8,14 @@ import {
 } from '@mui/material';
 
 import AppToolbar from './AppToolbar';
-import { RouterProvider } from '../contexts/Router';
-
-import './App.css';
+import { Router } from './Router';
 
 function App() {
   return (
     <Box>
       <AppToolbar />
       <Divider />
-      <RouterProvider />
+      <Router />
       <Box className="App-instructions" sx={{ textAlign: 'center', px: 2, my: 6 }}>
         <Typography variant="body2">
           This tool brought to you by
