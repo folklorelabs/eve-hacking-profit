@@ -1,5 +1,4 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import {
   Table,
   TableBody,
@@ -14,13 +13,14 @@ import {
 } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { itemProps } from '../propTypes/item';
+import { siteProps } from '../propTypes/site';
 import {
   useRelicSitesContext,
   getFactionCanAvg,
   getFactionCanMax,
   getFactionRelicItems,
 } from '../contexts/RelicSites';
+import Site from './Site';
 
 function Row({ site }) {
   const [open, setOpen] = React.useState(false);
@@ -58,7 +58,7 @@ function Row({ site }) {
               pb: 5,
             }}
             >
-              {/* <Can can={can} /> */}
+              <Site site={site} />
             </Box>
           </Collapse>
         </TableCell>
@@ -68,19 +68,7 @@ function Row({ site }) {
 }
 
 Row.propTypes = {
-  site: PropTypes.shape({
-    id: PropTypes.string,
-    siteType: PropTypes.string,
-    faction: PropTypes.string,
-    value: PropTypes.number,
-    max: PropTypes.number,
-    lootTable: PropTypes.arrayOf(itemProps),
-    canMeta: PropTypes.shape({
-      probability: PropTypes.number,
-      qtyCeiling: PropTypes.number,
-      qtyFloor: PropTypes.number,
-    }),
-  }).isRequired,
+  site: siteProps.isRequired,
 };
 
 export default function RelicSiteTable() {
@@ -91,10 +79,12 @@ export default function RelicSiteTable() {
       Object.keys(relicSitesState.sites).forEach((siteType) => {
         const site = relicSitesState.sites[siteType];
         const siteCans = Object.keys(site.cans).map((canType) => ({
-          name: canType,
-          qty: site.cans[canType],
+          id: `${factionName}_${siteType}_${canType}`,
+          faction: factionName,
+          type: canType,
           value: getFactionCanAvg(relicSitesState, factionName, canType),
           max: getFactionCanMax(relicSitesState, factionName, canType),
+          qty: site.cans[canType],
         }));
         sites.push({
           id: `Ruined ${factionName} ${siteType}`,
@@ -125,7 +115,7 @@ export default function RelicSiteTable() {
         </TableHead>
         <TableBody>
           {allSites.sort((a, b) => b.value - a.value).map((site) => (
-            <Row site={site} />
+            <Row key={site.id} site={site} />
           ))}
         </TableBody>
       </Table>

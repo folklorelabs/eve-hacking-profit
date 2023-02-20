@@ -19,8 +19,9 @@ export const canProps = PropTypes.shape({
   ]).isRequired,
   value: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
-  lootTable: PropTypes.arrayOf(itemProps).isRequired,
-  lootTiers: PropTypes.arrayOf(lootTierProps).isRequired,
+  lootTable: PropTypes.arrayOf(itemProps),
+  lootTiers: PropTypes.arrayOf(lootTierProps),
+  qty: PropTypes.number,
 });
 
 export default canProps;

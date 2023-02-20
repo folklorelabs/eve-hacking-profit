@@ -1,65 +1,78 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import {
-  Box,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  // Box,
   Typography,
 } from '@mui/material';
-import percentLabel from '../utils/percentLabel';
+// import percentLabel from '../utils/percentLabel';
 
 import {
   Container,
 } from './Site.styles';
-import LootTable from './LootTable';
-import { TypeEmphasis } from './TypeEmphasis';
-import { siteMetaProps } from '../propTypes/siteMeta';
+// import LootTable from './LootTable';
+// import { TypeEmphasis } from './TypeEmphasis';
 import { siteProps } from '../propTypes/site';
 
 function Site({
   site,
-  siteMeta,
-  size,
 }) {
   return (
-    <Container className="Site" size={size}>
-      {Object.keys(can.canMeta).filter((tier) => !!can.canMeta[tier].probability).map((tier) => (
-        <Box sx={{ pr: 8 }}>
-          <Typography variant="h6" gutterBottom component="div">
-            T
-            {tier}
-            {' '}
-            Salvage
-          </Typography>
-          <Typography sx={{ maxWidth: 260 }}>
-            <TypeEmphasis>
-              {percentLabel(can.canMeta[tier].probability)}
-            </TypeEmphasis>
-            {' '}
-            chance to contain
-            {' '}
-            <TypeEmphasis>
-              {can.canMeta[tier].qtyFloor}
-              -
-              {can.canMeta[tier].qtyCeiling}
-            </TypeEmphasis>
-            {' '}
-            items:
-          </Typography>
-          <LootTable lootTable={can.lootTable.filter((item) => `${item.tier}` === tier)} />
-        </Box>
-      ))}
+    <Container className="Site">
+      <Typography variant="h6" gutterBottom component="div">
+        Ruined
+        {' '}
+        {site.faction}
+        {' '}
+        {site.siteType}
+      </Typography>
+      <Typography>
+        Difficulty:
+        {' '}
+        {site.difficulty}
+      </Typography>
+      <Table size="small" aria-label="purchases">
+        <TableHead>
+          <TableRow>
+            <TableCell>Name</TableCell>
+            <TableCell align="right">Average Can Value (ISK)</TableCell>
+            <TableCell align="right">Max Can Value (ISK)</TableCell>
+            <TableCell align="right">Cans / Site</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {site.cans.sort((a, b) => b.value - a.value).map((can) => (
+            <TableRow key={can.id}>
+              <TableCell component="th" scope="row">
+                {can.type}
+              </TableCell>
+              <TableCell align="right">
+                {Math.round(can.value).toLocaleString()}
+              </TableCell>
+              <TableCell align="right">
+                {Math.round(can.max).toLocaleString()}
+              </TableCell>
+              <TableCell align="right">
+                {can.qty.toLocaleString()}
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
     </Container>
   );
 }
 
 Site.defaultProps = {
-  size: 0.8,
+
 };
 
 Site.propTypes = {
-  size: PropTypes.number,
-  site: siteProps,
-  siteMeta: siteMetaProps,
+  site: siteProps.isRequired,
 };
 
 export default Site;

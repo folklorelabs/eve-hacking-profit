@@ -14,7 +14,7 @@ function AppToolbar() {
       <Toolbar>
         <Link className="App-headlineLink" color="inherit" href="/" sx={{ textDecoration: 'none', flexGrow: 1, textAlign: 'left' }}>
           <Typography variant="h6" component="span">
-            EVE Relic Appraisal
+            EVE Exploration Appraisal
           </Typography>
         </Link>
         <ColorModeToggle />

@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { itemProps } from './item';
-import { canTierMetaProps } from './lootTier';
+import { canProps } from './can';
 
 export const siteDefaults = {
 
@@ -20,8 +19,7 @@ export const siteProps = PropTypes.shape({
   difficulty: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
-  lootTable: PropTypes.arrayOf(itemProps).isRequired,
-  canTierMeta: PropTypes.arrayOf(canTierMetaProps).isRequired,
+  cans: PropTypes.arrayOf(canProps).isRequired,
 });
 
 export default siteProps;
