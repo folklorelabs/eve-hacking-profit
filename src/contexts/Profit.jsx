@@ -16,8 +16,8 @@ const INITIAL_STATE = {
   factions: FACTIONS,
   items: ITEMS,
   itemTypes: ITEM_TYPES,
-  cans: CANS,
-  sites: SITES,
+  cans: CANS.filter((c) => c.category === 'relic'),
+  sites: SITES.filter((s) => s.category === 'relic'),
 };
 
 // ACTIONS

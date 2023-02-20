@@ -147,25 +147,27 @@ export default function CanTable() {
   return (
     <Box>
       <Box sx={{ display: 'flex', m: 3 }}>
-        <Box sx={{ mr: 2 }}>
-          Type:
-          {' '}
-          <ToggleButtonGroup
-            size="small"
-            value={canCategoryFilters}
-            onChange={(e, newFilters) => {
-              setCanCategoryFilters(newFilters);
-              setDirty(true);
-            }}
-            aria-label="category filtering"
-          >
-            {canCategories.map((categoryId) => (
-              <ToggleButton key={categoryId} value={categoryId} aria-label={categoryId}>
-                {categoryId}
-              </ToggleButton>
-            ))}
-          </ToggleButtonGroup>
-        </Box>
+        {canCategories.length > 1 ? (
+          <Box sx={{ mr: 2 }}>
+            Type:
+            {' '}
+            <ToggleButtonGroup
+              size="small"
+              value={canCategoryFilters}
+              onChange={(e, newFilters) => {
+                setCanCategoryFilters(newFilters);
+                setDirty(true);
+              }}
+              aria-label="category filtering"
+            >
+              {canCategories.map((categoryId) => (
+                <ToggleButton key={categoryId} value={categoryId} aria-label={categoryId}>
+                  {categoryId}
+                </ToggleButton>
+              ))}
+            </ToggleButtonGroup>
+          </Box>
+        ) : ''}
         <Box sx={{ mr: 2 }}>
           Faction:
           {' '}

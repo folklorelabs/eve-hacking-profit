@@ -145,24 +145,26 @@ export default function SiteTable() {
   return (
     <Box>
       <Box sx={{ display: 'flex', m: 3 }}>
-        <Box sx={{ mr: 2 }}>
-          Type:
-          {' '}
-          <ToggleButtonGroup
-            size="small"
-            value={categoryFilters}
-            onChange={(e, newFilters) => {
-              setCategoryFilters(newFilters);
-            }}
-            aria-label="category filtering"
-          >
-            {siteCategories.map((category) => (
-              <ToggleButton key={category.id} value={category.id} aria-label={category.id}>
-                {category.name}
-              </ToggleButton>
-            ))}
-          </ToggleButtonGroup>
-        </Box>
+        {siteCategories.length > 1 ? (
+          <Box sx={{ mr: 2 }}>
+            Type:
+            {' '}
+            <ToggleButtonGroup
+              size="small"
+              value={categoryFilters}
+              onChange={(e, newFilters) => {
+                setCategoryFilters(newFilters);
+              }}
+              aria-label="category filtering"
+            >
+              {siteCategories.map((category) => (
+                <ToggleButton key={category.id} value={category.id} aria-label={category.id}>
+                  {category.name}
+                </ToggleButton>
+              ))}
+            </ToggleButtonGroup>
+          </Box>
+        ) : ''}
         <Box sx={{ mr: 2 }}>
           Faction:
           {' '}
