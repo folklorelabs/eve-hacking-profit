@@ -14,7 +14,6 @@ import {
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { canProps } from '../propTypes/can';
-import { canMetaProps } from '../propTypes/canMeta';
 import Can from './Can';
 import {
   useRelicSitesContext,
@@ -23,7 +22,7 @@ import {
   getFactionRelicItems,
 } from '../contexts/RelicSites';
 
-function Row({ can, canMeta }) {
+function Row({ can }) {
   const [open, setOpen] = React.useState(false);
   return (
     <>
@@ -59,7 +58,7 @@ function Row({ can, canMeta }) {
               pb: 5,
             }}
             >
-              <Can can={can} canMeta={canMeta} />
+              <Can can={can} />
             </Box>
           </Collapse>
         </TableCell>
@@ -70,7 +69,6 @@ function Row({ can, canMeta }) {
 
 Row.propTypes = {
   can: canProps.isRequired,
-  canMeta: canMetaProps.isRequired,
 };
 
 export default function RelicCanTable() {
@@ -86,6 +84,10 @@ export default function RelicCanTable() {
           lootTable: getFactionRelicItems(relicSitesState, factionName),
           value: getFactionCanAvg(relicSitesState, factionName, canType),
           max: getFactionCanMax(relicSitesState, factionName, canType),
+          lootTiers: Object.keys(relicSitesState.cans[canType]).map((lootTierId) => ({
+            ...relicSitesState.cans[canType][lootTierId],
+            id: lootTierId,
+          })),
         };
         cans.push(can);
       });
@@ -110,7 +112,6 @@ export default function RelicCanTable() {
             <Row
               key={can.id}
               can={can}
-              canMeta={relicSitesState.cans[can.type]}
             />
           ))}
         </TableBody>

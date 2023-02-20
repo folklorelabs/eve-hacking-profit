@@ -6,7 +6,6 @@ import {
   Typography,
 } from '@mui/material';
 import { canProps } from '../propTypes/can';
-import { canMetaProps } from '../propTypes/canMeta';
 
 import percentLabel from '../utils/percentLabel';
 
@@ -18,35 +17,34 @@ import { TypeEmphasis } from './TypeEmphasis';
 
 function Can({
   can,
-  canMeta,
   size,
 }) {
   return (
     <Container className="Can" size={size}>
-      {Object.keys(canMeta).filter((tier) => !!canMeta[tier].probability).map((tier) => (
-        <Box key={`${can.id}_${tier}`} sx={{ pr: 8 }}>
+      {can.lootTiers.filter((tier) => !!tier.probability).map((lootTier) => (
+        <Box key={`${can.id}_${lootTier.id}`} sx={{ pr: 8 }}>
           <Typography variant="h6" gutterBottom component="div">
             T
-            {tier}
+            {lootTier.id}
             {' '}
             Salvage
           </Typography>
           <Typography sx={{ maxWidth: 260 }}>
             <TypeEmphasis>
-              {percentLabel(canMeta[tier].probability)}
+              {percentLabel(lootTier.probability)}
             </TypeEmphasis>
             {' '}
             chance to contain
             {' '}
             <TypeEmphasis>
-              {canMeta[tier].qtyFloor}
+              {lootTier.qtyFloor}
               -
-              {canMeta[tier].qtyCeiling}
+              {lootTier.qtyCeiling}
             </TypeEmphasis>
             {' '}
             items:
           </Typography>
-          <LootTable lootTable={can.lootTable.filter((item) => `${item.tier}` === tier)} />
+          <LootTable lootTable={can.lootTable.filter((item) => `${item.tier}` === lootTier.id)} />
         </Box>
       ))}
     </Container>
@@ -60,7 +58,6 @@ Can.defaultProps = {
 Can.propTypes = {
   size: PropTypes.number,
   can: canProps.isRequired,
-  canMeta: canMetaProps.isRequired,
 };
 
 export default Can;

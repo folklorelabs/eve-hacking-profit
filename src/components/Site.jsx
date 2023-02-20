@@ -5,7 +5,6 @@ import {
   Box,
   Typography,
 } from '@mui/material';
-import { itemProps } from '../propTypes/item';
 import percentLabel from '../utils/percentLabel';
 
 import {
@@ -13,9 +12,12 @@ import {
 } from './Site.styles';
 import LootTable from './LootTable';
 import { TypeEmphasis } from './TypeEmphasis';
+import { siteMetaProps } from '../propTypes/siteMeta';
+import { siteProps } from '../propTypes/site';
 
 function Site({
-  can,
+  site,
+  siteMeta,
   size,
 }) {
   return (
@@ -56,19 +58,8 @@ Site.defaultProps = {
 
 Site.propTypes = {
   size: PropTypes.number,
-  can: PropTypes.shape({
-    id: PropTypes.string,
-    type: PropTypes.string,
-    faction: PropTypes.string,
-    value: PropTypes.number,
-    max: PropTypes.number,
-    lootTable: PropTypes.arrayOf(itemProps),
-    canMeta: PropTypes.shape({
-      probability: PropTypes.number,
-      qtyCeiling: PropTypes.number,
-      qtyFloor: PropTypes.number,
-    }),
-  }).isRequired,
+  site: siteProps,
+  siteMeta: siteMetaProps,
 };
 
 export default Site;
