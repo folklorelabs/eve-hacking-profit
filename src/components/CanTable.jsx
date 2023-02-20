@@ -103,7 +103,6 @@ export default function CanTable() {
     profitState.factions.forEach((faction) => {
       profitState.cans.forEach((can) => {
         const categoryId = can.contents[0].type.split('-')[0];
-        console.log(profitState);
         cans.push({
           id: `${faction.id}_${can.id}`,
           name: `${faction.name} ${can.name}`,
