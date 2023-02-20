@@ -4,7 +4,7 @@ import './index.css';
 import './index.styles';
 import { SnackbarProvider } from 'notistack';
 import App from './components/App';
-import { ZkillPointsProvider } from './contexts/ZkillPoints';
+import { RelicSitesProvider } from './contexts/RelicSites';
 import { ColorModeProvider } from './contexts/ColorMode';
 import reportWebVitals from './reportWebVitals';
 
@@ -13,9 +13,9 @@ root.render(
   <React.StrictMode>
     <ColorModeProvider>
       <SnackbarProvider maxSnack={3}>
-        <ZkillPointsProvider>
+        <RelicSitesProvider>
           <App />
-        </ZkillPointsProvider>
+        </RelicSitesProvider>
       </SnackbarProvider>
     </ColorModeProvider>
   </React.StrictMode>,

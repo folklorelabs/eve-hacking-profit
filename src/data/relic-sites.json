@@ -1,0 +1,34 @@
+{
+  "Monument Site": {
+    "difficulty": 1,
+    "cans": {
+      "Rubble": 2,
+      "Remains": 3,
+      "Ruins": 1
+    }
+  },
+  "Temple Site": {
+    "difficulty": 1,
+    "cans": {
+      "Rubble": 1,
+      "Remains": 3,
+      "Ruins": 2
+    }
+  },
+  "Science Output": {
+    "difficulty": 2,
+    "cans": {
+      "Rubble": 0,
+      "Remains": 4,
+      "Ruins": 2
+    }
+  },
+  "Crystal Quarry": {
+    "difficulty": 2,
+    "cans": {
+      "Rubble": 1,
+      "Remains": 3,
+      "Ruins": 3
+    }
+  }
+}

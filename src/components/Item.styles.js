@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div`
     font-size: ${({ size }) => size}em;
-    cursor: help;
 `;
 
 export const InnerWrapper = styled.div`
@@ -23,5 +22,5 @@ export const TextWrapper = styled.div`
     justify-content: center;
     flex-direction: column;
     align-items: flex-start;
-    font-weight: bold;
+    font-weight: normal;
 `;

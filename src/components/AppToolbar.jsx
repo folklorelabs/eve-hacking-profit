@@ -14,7 +14,7 @@ function AppToolbar() {
       <Toolbar>
         <Link className="App-headlineLink" color="inherit" href="/" sx={{ textDecoration: 'none', flexGrow: 1, textAlign: 'left' }}>
           <Typography variant="h6" component="span">
-            Killmail Simulator
+            EVE Relic Appraisal
           </Typography>
         </Link>
         <ColorModeToggle />

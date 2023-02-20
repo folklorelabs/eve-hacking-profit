@@ -1,5 +1,4 @@
 export default function percentLabel(num) {
-  if (num > 0) return `+${num}%`;
-  if (num < 0) return `${num}%`;
-  return '--';
+  if (typeof num !== 'number') return '--';
+  return `${(Math.round(num * 1000) / 10).toLocaleString()}%`;
 }

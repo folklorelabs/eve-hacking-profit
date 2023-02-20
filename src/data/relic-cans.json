@@ -1,0 +1,38 @@
+{
+  "Rubble": {
+    "1": {
+      "probability": 0.25,
+      "qtyFloor": 3,
+      "qtyCeiling": 20
+    },
+    "2": {
+      "probability": 0.055,
+      "qtyFloor": 1,
+      "qtyCeiling": 3
+    }
+  },
+  "Remains": {
+    "1": {
+      "probability": 0.5,
+      "qtyFloor": 5,
+      "qtyCeiling": 40
+    },
+    "2": {
+      "probability": 0.125,
+      "qtyFloor": 1,
+      "qtyCeiling": 5
+    }
+  },
+  "Ruins": {
+    "1": {
+      "probability": 0,
+      "qtyFloor": 0,
+      "qtyCeiling": 0
+    },
+    "2": {
+      "probability": 0.25,
+      "qtyFloor": 1,
+      "qtyCeiling": 15
+    }
+  }
+}
