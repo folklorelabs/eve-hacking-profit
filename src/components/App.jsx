@@ -26,7 +26,11 @@ function App() {
           . All EVE related materials are property of
           {' '}
           <Link href="http://www.ccpgames.com/" target="_blank" rel="noreferrer">CCP Games</Link>
-          .
+          . Visit
+          {' '}
+          <Link href="https://wiki.eveuniversity.org/Relic_and_data_sites" target="_blank" rel="noreferrer">EVE University</Link>
+          {' '}
+          to learn more about relic and data sites.
         </Typography>
       </Box>
     </Box>
