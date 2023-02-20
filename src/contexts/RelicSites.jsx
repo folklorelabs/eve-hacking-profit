@@ -87,56 +87,31 @@ export function getFactionRelicItemsByTier(state, factionName) {
   }, {});
 }
 export function getFactionCanAvg(state, factionName, canType) {
+  const can = state.cans[canType];
   const itemsByTier = getFactionRelicItemsByTier(state, factionName);
   const tiers = Object.keys(itemsByTier);
-  const tierAverages = tiers.reduce((all, tier) => {
-    const vals = itemsByTier[tier];
-    const sum = vals.reduce((s, item) => s + item.esiValue, 0);
-    return {
-      ...all,
-      [tier]: sum / vals.length,
-    };
-  }, {});
-  const can = state.cans[canType];
-  const canQtys = tiers.reduce((all, tier) => {
+  const canAvgValue = tiers.reduce((sum, tier) => {
     const canTier = can[tier];
-    return {
-      ...all,
-      [tier]: ((canTier.qtyCeiling - canTier.qtyFloor) / 2) + canTier.qtyFloor,
-    };
-  }, {});
-  return tiers.reduce((all, tier) => {
-    const canTier = can[tier];
-    const canQty = canQtys[tier];
-    const cansVal = tierAverages[tier] * canQty;
-    const tierVal = canTier.probability * cansVal;
-    return all + tierVal;
+    const itemQty = ((canTier.qtyCeiling - canTier.qtyFloor) / 2) + canTier.qtyFloor;
+    const tierSum = itemsByTier[tier]
+      .reduce((tSum, item) => tSum + (item.esiValue * itemQty), 0);
+    return sum + (tierSum * canTier.probability);
   }, 0);
+  return canAvgValue;
 }
 
 export function getFactionCanMax(state, factionName, canType) {
+  const can = state.cans[canType];
   const itemsByTier = getFactionRelicItemsByTier(state, factionName);
   const tiers = Object.keys(itemsByTier);
-  const tierMax = tiers.reduce((all, tier) => {
-    const vals = itemsByTier[tier].map((item) => item.esiValue);
-    return {
-      ...all,
-      [tier]: Math.max(...vals),
-    };
-  }, {});
-  const can = state.cans[canType];
-  const canQtys = tiers.reduce((all, tier) => {
+  const canMaxValue = tiers.reduce((sum, tier) => {
     const canTier = can[tier];
-    return {
-      ...all,
-      [tier]: canTier.qtyCeiling,
-    };
-  }, {});
-  return tiers.reduce((all, tier) => {
-    const canQty = canQtys[tier];
-    const cansVal = tierMax[tier] * canQty;
-    return all + cansVal;
+    const itemQty = canTier.qtyCeiling;
+    const tierSum = itemsByTier[tier]
+      .reduce((tSum, item) => tSum + (item.esiValue * itemQty), 0);
+    return sum + tierSum;
   }, 0);
+  return canMaxValue;
 }
 
 const RelicSitesContext = createContext({

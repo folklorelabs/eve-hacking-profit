@@ -34,7 +34,7 @@ function Can({
               {percentLabel(lootTier.probability)}
             </TypeEmphasis>
             {' '}
-            chance to contain
+            chance for
             {' '}
             <TypeEmphasis>
               {lootTier.qtyFloor}
@@ -42,7 +42,7 @@ function Can({
               {lootTier.qtyCeiling}
             </TypeEmphasis>
             {' '}
-            items:
+            of each:
           </Typography>
           <LootTable lootTable={can.lootTable.filter((item) => `${item.tier}` === lootTier.id)} />
         </Box>
