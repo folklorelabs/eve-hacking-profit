@@ -1,14 +1,14 @@
 import React from 'react';
-
 import {
-  createBrowserRouter,
+  createHashRouter,
   RouterProvider as RRProvider,
 } from 'react-router-dom';
+
 import RelicCanTable from '../components/RelicCanTable';
 
 import RelicSiteTable from '../components/RelicSiteTable';
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: '/',
     element: <RelicSiteTable />,
